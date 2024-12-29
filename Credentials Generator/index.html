@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Credentials Generator</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="app">
+  <section class="wrapper">
+    <h1>Generated Password</h1>
+    
+    <!-- Password Box -->
+    <div class="password-box">
+      <span id="password" class="password" :title="password">{{ password }}</span>
+      <button class="copy-btn" @click="copyToClipboard">Copy</button>
+    </div>
+    <span class="tooltip" v-if="copied">Password copied!</span>
+    
+    <!-- Strength Slider -->
+    <div class="field-wrap">
+      <label>Password Strength</label>
+      <span class="range-value">{{ strength.text }}</span>
+      <div class="range-slider_wrapper slider-strength" :class="strength.text">
+        <span class="slider-bar" :style="{ width: strength.score + '%' }"></span>
+        <input type="range" class="range-slider" min="0" max="100" v-model="strength.score" disabled>
+      </div>
+    </div>
+
+    <!-- Adjustable Settings -->
+    <form @keydown.enter.prevent="">
+      <div class="field-wrap">
+        <label>Password Length</label>
+        <span class="range-value">{{ settings.length }}</span>
+        <div class="range-slider_wrapper">
+          <span class="slider-bar" :style="{ width: lengthThumbPosition + '%' }"></span>
+          <input type="range" class="range-slider" min="6" :max="settings.maxLength" v-model="settings.length">
+        </div>  
+      </div>
+      <div class="field-wrap">
+        <label>Digits</label>
+        <span class="range-value">{{ settings.digits }}</span>
+        <div class="range-slider_wrapper">
+          <span class="slider-bar" :style="{ width: digitsThumbPosition + '%' }"></span>
+          <input type="range" class="range-slider" min="0" :max="settings.maxDigits" v-model="settings.digits">
+        </div>  
+      </div>
+      <div class="field-wrap">
+        <label>Symbols</label>
+        <span class="range-value">{{ settings.symbols }}</span>
+        <div class="range-slider_wrapper">
+          <span class="slider-bar" :style="{ width: symbolsThumbPosition + '%' }"></span>
+          <input type="range" class="range-slider" min="0" :max="settings.maxSymbols" v-model="settings.symbols">
+        </div>  
+      </div>
+    </form>
+    
+    <!-- Separator -->
+    <div class="seperator"></div>
+
+    <!-- Username Generator -->
+    <div class="username-box">
+      <h2>Generated Username</h2>
+      <div class="username-display">
+        <span id="username" class="username">{{ username }}</span>
+        <button class="generate-username" @click="generateUsername">Generate Username</button>
+      </div>
+    </div>
+  </section>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+Create ultra-secure passwords and usernames by using Credentials Generator. Customize your password's length, digits, and symbols to suit your security needs. Easily copy and store your password securely, choosing the method that works best for you. Randomly generate the perfect username as well, to go with your password, creating the ideal credentials for your needs.
